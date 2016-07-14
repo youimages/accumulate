@@ -52,7 +52,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @apiUrl: http://www.yiibai.com/apache_poi/apache_poi_cells.html
  * @demoUrl:http://blog.csdn.net/xiaoxian8023/article/details/40597835
  */
-public class ExcelUtil {
+public class ExcelUtils {
 	private String excelPath = "";//Excel文件路径
 	
 	private int startReadPos = 0;// 设定开始读取的位置，默认为0
@@ -89,11 +89,11 @@ public class ExcelUtil {
 	//%%%%%%%%-------字段部分结束----------%%%%%%%%%
 	
 	//构造方法
-	public ExcelUtil(){
+	public ExcelUtils(){
 		super();
 	}
 	//带入excelPath参数的构造方法
-	public ExcelUtil(String excelPath){
+	public ExcelUtils(String excelPath){
 		this.excelPath = excelPath;
 	}
 	
@@ -101,8 +101,8 @@ public class ExcelUtil {
 	 * 还原设定（其实是重新new一个新的对象并返回）
 	 * @return
 	 */
-	public ExcelUtil RestoreSettings(){
-		ExcelUtil instance = new  ExcelUtil(this.excelPath);
+	public ExcelUtils RestoreSettings(){
+		ExcelUtils instance = new  ExcelUtils(this.excelPath);
 		return instance;
 	}
 	
