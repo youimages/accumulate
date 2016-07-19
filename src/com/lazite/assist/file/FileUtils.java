@@ -15,9 +15,11 @@ import java.net.URLEncoder;
 public class FileUtils {
 	/**
 	 * 获取文件扩展名
-	 * 
+	 * @Title getExtend
+	 * @Description TODO
 	 * @param filename
 	 * @return
+	 * @throws TODO
 	 */
 	public static String getExtend(String filename) {
 		return getExtend(filename, "");
@@ -25,9 +27,12 @@ public class FileUtils {
 
 	/**
 	 * 获取文件扩展名
-	 * 
+	 * @Title getExtend
+	 * @Description TODO
 	 * @param filename
+	 * @param defExt
 	 * @return
+	 * @throws TODO
 	 */
 	public static String getExtend(String filename, String defExt) {
 		if ((filename != null) && (filename.length() > 0)) {
@@ -42,9 +47,11 @@ public class FileUtils {
 
 	/**
 	 * 获取文件名称[不含后缀名]
-	 * 
-	 * @param
-	 * @return String
+	 * @Title getFilePrefix
+	 * @Description TODO
+	 * @param fileName
+	 * @return
+	 * @throws TODO
 	 */
 	public static String getFilePrefix(String fileName) {
 		int splitIndex = fileName.lastIndexOf(".");
@@ -54,8 +61,11 @@ public class FileUtils {
 	/**
 	 * 获取文件名称[不含后缀名]
 	 * 不去掉文件目录的空格
-	 * @param
-	 * @return String
+	 * @Title getFilePrefix2
+	 * @Description TODO
+	 * @param fileName
+	 * @return
+	 * @throws TODO
 	 */
 	public static String getFilePrefix2(String fileName) {
 		int splitIndex = fileName.lastIndexOf(".");
@@ -63,10 +73,13 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 文件复制
-	 *方法摘要：这里一句话描述方法的用途
-	 *@param
-	 *@return void
+	 * * 文件复制
+	 * @Title copyFile
+	 * @Description TODO
+	 * @param inputFile
+	 * @param outputFile
+	 * @throws FileNotFoundException
+	 * @throws TODO
 	 */
 	public static void copyFile(String inputFile,String outputFile) throws FileNotFoundException{
 		File sFile = new File(inputFile);
@@ -90,6 +103,7 @@ public class FileUtils {
 			}
         } 
 	}
+	
 	/**
 	 * 判断文件是否为图片<br>
 	 * <br>
