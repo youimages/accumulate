@@ -186,8 +186,5 @@ public class DynamicEnum {
            throw new RuntimeException(e.getMessage(), e);
        }
    }
-   
-   public static void main(String[] args) {
-		
-   }   
+
 }
