@@ -84,11 +84,20 @@ public class TestEnums {
 	   
 	   public static void main(String[] args) {
 	 
-//	       // Dynamically add 3 new enum instances d, e, f to TestEnum
-//		   DynamicEnum.add(TestEnum.class, "d");
-//		   DynamicEnum.add(TestEnum.class, "e");
-//		   //DynamicEnum.
-//	 
+	       // Dynamically add 3 new enum instances d, e, f to TestEnum
+		   DynamicEnum.add(TestEnum.class, "d");
+		   DynamicEnum.add(TestEnum.class, "e");
+		   
+		   System.out.println(Arrays.deepToString(TestEnum.values()));
+		   DynamicEnum.remove(TestEnum.class, "e");
+		   System.out.println(Arrays.deepToString(TestEnum.values()));
+		   
+		   
+		   System.out.println(Arrays.deepToString(Hjqk.values()));
+		   DynamicEnum.remove(Hjqk.class, "coo");
+		   System.out.println(Arrays.deepToString(Hjqk.values()));
+
+		   
 //	       // Run a few tests just to show it works OK.
 //	       System.out.println(Arrays.deepToString(TestEnum.values()));
 //	       // Shows : [a, b, c, d, e, f]

@@ -135,6 +135,63 @@ public class DynamicEnum {
 	       }
 	   }
 	   
+	   /**
+	    * 
+	    * @Title remove
+	    * @Description 动态删除一个枚举
+	    * @param enumType
+	    * @param enumName
+	    * @throws TODO
+	    */
+	   @SuppressWarnings("unchecked")
+	   public static <T extends Enum<?>> void remove(Class<T> enumType, String enumName) {
+	 
+	       // 0. Sanity checks
+	       if (!Enum.class.isAssignableFrom(enumType)) {
+	           throw new RuntimeException("class " + enumType + " is not an instance of Enum");
+	       }
+	 
+	       // 1. Lookup "$VALUES" holder in enum class and get previous enum instances
+	       Field valuesField = null;
+	       Field[] fields = enumType.getDeclaredFields();
+	       for (Field field : fields) {
+	           if (field.getName().contains("$VALUES")) {
+	               valuesField = field;
+	               break;
+	           }
+	       }
+	       AccessibleObject.setAccessible(new Field[] { valuesField }, true);
+	 
+	       try {
+	 
+	           // 2. Copy it
+	           T[] previousValues = (T[]) valuesField.get(enumType);
+	           List<T> values = new ArrayList<T>(Arrays.asList(previousValues));
+	           
+	           // 3. find it
+	           int index=-1;
+	           for (int i = 0; i < values.size(); i++) {
+	        	   if(values.get(i).name().equals(enumName)){
+	        		   index=i;
+	        	   }
+	           }
+	           
+	           // 4. remove this value
+	           if(index!=-1)
+	        	   values.remove(index);	        		   
+
+	           // 5. Set new values field
+	           setFailsafeFieldValue(valuesField, null, values.toArray((T[]) Array.newInstance(enumType, 0)));
+	 
+	           // 6. Clean enum cache
+	           cleanEnumCache(enumType);
+	 
+	       } catch (Exception e) {
+	           e.printStackTrace();
+	           throw new RuntimeException(e.getMessage(), e);
+	       }
+	   }
+	   
 	/**
 	 *    
 	 * @Title add
