@@ -8,6 +8,17 @@ public class InitPo {
 	protected String sperate="";
 	
 	
+	public InitPo() {
+		super();
+	}
+
+	public InitPo(String projectName, String className, String sperate) {
+		super();
+		this.projectName = projectName;
+		this.className = className;
+		this.sperate = sperate;
+	}
+
 	public String getProjectName() {
 		return projectName;
 	}
