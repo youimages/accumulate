@@ -32,7 +32,7 @@
 											<button id="${btn.id}" class="${btn.btnClass}" 
 												<#if btn.type == 'model'>
 													data-target="#${btn.model_id}" data-toggle="modal"
-												</#if>>
+												</#if>>	
 												${btn.value} <i class="${btn.icon}"></i>
 											</button>	
 										</#list>

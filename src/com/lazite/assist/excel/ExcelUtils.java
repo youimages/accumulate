@@ -77,7 +77,7 @@ public class ExcelUtils {
 
 	private int endSheetIdx = 0;//设定结束读取的sheet，默认为0，用负数来表示倒数第n行
 	
-	private boolean printMsg = false;//设定是否打印消息
+	private boolean printMsg = true;//设定是否打印消息
 	
 	private String extType="xls";//xls,xlxs,默认为
 	
@@ -355,7 +355,7 @@ public class ExcelUtils {
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<Map> readExcel_Map(Workbook wb) {
+	public List<Map> readExcel_Map(Workbook wb) {
 		List<Map> mapList = new ArrayList<Map>();
 		
 		int sheetCount = 1;//需要操作的sheet数量
@@ -934,8 +934,6 @@ public class ExcelUtils {
 //			cell = row.createCell(beginCell);
 //		} 
 //	}
-
-	
 	
 	///////////////////////////////////////////////////
 	//以下为get/set

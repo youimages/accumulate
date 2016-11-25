@@ -1,5 +1,6 @@
 package com.lazite.assist.produce.jpa.pojo.ftl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,7 +56,6 @@ public class Attribute{
 		this.inputType = inputType;
 		this.ars = ars;
 	}
-
 
 	public String getName() {
 		return name;

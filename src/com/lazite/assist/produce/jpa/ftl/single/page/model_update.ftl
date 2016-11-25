@@ -1,61 +1,43 @@
+<!--${module.nameCN}修改的模态弹出层-->
 <div id="update${module.name?cap_first}Model" class="modal fade" tabindex="-1" data-focus-on="input:first">
 	<div class="modal-header modal-head-mis">
 		<button type="button" class="close modal-head-close" data-dismiss="modal" aria-hidden="true"></button>
-		<h4 class="modal-title">添加栏目</h4>
+		<h4 class="modal-title">添加${module.nameCN}</h4>
 	</div>
+	
 	<div class="modal-body">
-		<form action="<%=basePath%>${module.name}/add" class="form-horizontal" method="post">
+	<form class="form-horizontal" id="${model_add.form.id}" action="${model_add.form.url}"  method="${model_add.form.method}">
 			<div class="form-body">
-				<div class="form-group">
-					<label class="col-md-3 control-label">名称:</label>
-					<div class="col-md-8">
-						<input type="text" name="name" class="form-control " placeholder="输入栏目名称" data-tabindex="1">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="title">父级栏目:</label>
-					<div class="col-md-8">
-						
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label">链接地址:</label>
-					<div class="col-md-8">
-						<input type="text" name="url" class="form-control " placeholder="输入链接地址" data-tabindex="2">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label">图标:</label>
-					<div class="col-md-8">
-						<input type="text" name="imgUrl" class="form-control " placeholder="选择栏目图标" data-tabindex="3">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label">是否显示:</label>
-					<div class="col-md-8">
-						<div class="col-md-4" style="margin-top:5px;">
-							<input id="option1" type="radio" name="isDisplay" value="1" class="make-switch switch-radio1" checked="checked">
-							<label for="option1">显示</label>
-						</div>
-						<div class="col-md-4" style="margin-top:5px;">
-							<input id="option2" type="radio" name="isDisplay" value="-1" class="make-switch switch-radio1">
-							<label for="option2">不显示</label>
+				<#if model_add.form.attributes?exists>
+				<#list model_add.form.attributes as fg>
+					<div class="${model_add.form.id}">
+						<label class="col-md-3 control-label">${fg.nameCN}:</label>
+						<div class="col-md-8">
+							<#--文本框-->
+							<#if fg.inputType=='text'>
+							<input class="form-control" name="${fg.name}" type="text" placeholder="${fg.placeholder}" data-tabindex="${fg_index+1}">
+							</#if>
+							<#--area文本框-->
+							<#if fg.inputType=='textarea'>
+							<input class="form-control" name="${fg.name}" type="textarea" placeholder="${fg.placeholder}" data-tabindex="${fg_index+1}">
+							</#if>
+							<#--radio-->
+							<#if fg.inputType=='radio'>
+								<#if fg.ars?exists>
+								<#list fg.ars as fgars>
+									<div class="col-md-4" style="margin-top:5px;">
+										<input id="${fg.name}_option_${fgars_index+1}" type="radio" name="${fg.name}" value="${fgars.value}" class="make-switch switch-radio1" checked="checked">
+										<label for="option1">${fgars.lable}</label>
+									</div>
+								</#list>
+								</#if>
+							</#if>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label">排序:</label>
-					<div class="col-md-8">
-						<input type="text" name="place" class="form-control " placeholder="输入排序位置" data-tabindex="5">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label">备注:</label>
-					<div class="col-md-8">
-						<textarea name="remark" class="form-control " placeholder="输入说明文本" data-tabindex="6"></textarea>
-					</div>
-				</div>
+				</#list>
+				</#if>
 			</div>
+			
 			<div class="modal-footer  modal-footer-mis">
 				<button type="button"  data-dismiss="modal"  class="btn btn-default modal-footer-mis">取  消</button>
 				<button type="submit" class="btn btn-primary modal-footer-mis">保  存</button>

@@ -17,10 +17,13 @@ import com.lazite.assist.produce.Pi;
 import com.lazite.assist.produce.jpa.pojo.FilePo;
 import com.lazite.assist.produce.jpa.pojo.Module;
 import com.lazite.assist.produce.jpa.pojo.ftl.Attribute;
+import com.lazite.assist.produce.jpa.pojo.ftl.Attribute_Radio;
 import com.lazite.assist.produce.jpa.pojo.ftl.Body;
 import com.lazite.assist.produce.jpa.pojo.ftl.Btn;
 import com.lazite.assist.produce.jpa.pojo.ftl.Caption;
+import com.lazite.assist.produce.jpa.pojo.ftl.Form;
 import com.lazite.assist.produce.jpa.pojo.ftl.Jsp;
+import com.lazite.assist.produce.jpa.pojo.ftl.Model;
 import com.lazite.assist.produce.jpa.pojo.ftl.i_tag;
 import com.lazite.assist.produce.jpa.pojo.ftl.table.Table;
 
@@ -32,7 +35,7 @@ public class JspProduce implements Pi{
 	public void produce() throws Exception {
 		Map<String,Object> rootMap = new HashMap<String,Object>();
 		
-		rootMap.put("module",new Module("网信管理信息系统","menu","栏目管理", null));
+		rootMap.put("module",new Module("网信管理信息系统","menu","栏目", null));
 
 		rootMap.put("jsp",new Jsp("/page/common/tag.ftl", "/page/common/header.ftl", "/page/common/body.ftl"));
 		
@@ -42,6 +45,28 @@ public class JspProduce implements Pi{
 			add("/page/model_add.ftl");
 			add("/page/model_update.ftl");
 		}};
+		
+		
+		List<Attribute_Radio> ars=new ArrayList<Attribute_Radio>(){{
+			add(new Attribute_Radio("显示", "1"));
+			add(new Attribute_Radio("不显示",  "0"));
+			
+		}};
+		
+		final  List<Attribute_Radio> fars=ars;
+		rootMap.put("model_add", new Model("",
+										"add", 
+										null, 
+										new Form("addTrayModel", "添加确认地址", "post", 
+												new ArrayList<Attribute>(){{
+													add(new Attribute("title", "名称", "15%","名称","text"));
+													add(new Attribute("rent", "租金", "15%","名称","textarea"));
+													add(new Attribute("rent", "租xx金", "租xx金","radio",fars));
+												}})
+											)
+		);
+		
+		
 		rootMap.put("body",new Body("/page/container.ftl", "/page/script_lable.ftl", "/page/script_defined.ftl",models));
 		
 		//导航
@@ -80,7 +105,6 @@ public class JspProduce implements Pi{
 		
 		
 		
-		
 		//new FreeMarkerUtil().print("jsp.ftl", "/com/lazite/assist/produce/jpa/ftl/single", rootMap);
 		new FreeMarkerUtil().printFile("jsp.ftl",
 									"/com/lazite/assist/produce/jpa/ftl/single",
@@ -116,7 +140,6 @@ public class JspProduce implements Pi{
 	public void setFilePo(FilePo filePo) {
 		this.filePo = filePo;
 	}
-	
 	
 	public static void main(String[] args) throws Exception {
 		new JspProduce().produce();
