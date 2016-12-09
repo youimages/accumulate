@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -60,6 +61,13 @@ public class FileUtils {
 		int splitIndex = fileName.lastIndexOf(".");
 		return fileName.substring(0, splitIndex).replaceAll("\\s*", "");
 	}
+	
+	public static BufferedReader getResourceBufferedReader(String url) throws IOException{    
+        //返回读取指定资源的输入流    
+        InputStream is=FileUtils.class.getResourceAsStream(url);      
+        BufferedReader br=new BufferedReader(new InputStreamReader(is));    
+        return br;
+    } 
 	
 	/**
 	 * 获取文件名称[不含后缀名]

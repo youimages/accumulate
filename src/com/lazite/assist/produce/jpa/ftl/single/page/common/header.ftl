@@ -20,6 +20,4 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>assets/css/plugins.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>assets/css/custom.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>tray/css/tray.css"/>
-	
-	<link rel="shortcut icon" href="favicon.ico"/>
   </head>

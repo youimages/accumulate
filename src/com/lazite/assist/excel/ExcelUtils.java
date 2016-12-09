@@ -730,6 +730,49 @@ public class ExcelUtils {
 		}
 	}
 	
+	/**
+	 * 获取合并单元格的起始结束行号
+	 * @Title getMergeRowsNum
+	 * @Description TODO
+	 * @param column
+	 * @param sheet
+	 * @return
+	 * @throws TODO
+	 */
+	public List<Integer[]> getMergeRowsNum(int column,Sheet sheet){
+		List<Integer[]> rowsNum=new ArrayList<Integer[]>();
+		
+		int sheetMergeCount = sheet.getNumMergedRegions();
+		for (int i = 0; i < sheetMergeCount; i++) {
+			// 获取合并单元格位置
+			CellRangeAddress ca = sheet.getMergedRegion(i);
+			int firstColumn = ca.getFirstColumn();
+			
+			if(firstColumn==column){
+				rowsNum.add(new Integer[]{ca.getFirstRow(),ca.getLastRow()});
+			}
+		}
+		return rowsNum;
+	}
+	
+	public List<Integer[]> getMergeRowsNum(int column,int from,int to,Sheet sheet){
+		List<Integer[]> rowsNum=new ArrayList<Integer[]>();
+		
+		int sheetMergeCount = sheet.getNumMergedRegions();
+		for (int i = 0; i < sheetMergeCount; i++) {
+			// 获取合并单元格位置
+			CellRangeAddress ca = sheet.getMergedRegion(i);
+			int firstColumn = ca.getFirstColumn();
+			
+			if(firstColumn==column){
+				if(ca.getFirstRow()>=from&&ca.getLastRow()<=to){
+					rowsNum.add(new Integer[]{ca.getFirstRow(),ca.getLastRow(),ca.getLastRow()-ca.getFirstRow()});					
+				}
+			}
+		}
+		return rowsNum;
+	}
+	
 	/***
 	 * 读取单元格的值
 	 * 
