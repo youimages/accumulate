@@ -105,11 +105,11 @@ public class JspProduce implements Pi{
 		
 		
 		
-		//new FreeMarkerUtil().print("jsp.ftl", "/com/lazite/assist/produce/jpa/ftl/single", rootMap);
-		new FreeMarkerUtil().printFile("jsp.ftl",
-									"/com/lazite/assist/produce/jpa/ftl/single",
-									rootMap, 
-									new File("D:\\ftl\\my.jsp"));
+		new FreeMarkerUtil().print("jsp.ftl", "/com/lazite/assist/produce/jpa/ftl/single", rootMap);
+//		new FreeMarkerUtil().printFile("jsp.ftl",
+//									"/com/lazite/assist/produce/jpa/ftl/single",
+//									rootMap, 
+//									new File("D:\\ftl\\my.jsp"));
 		
 		
 //		String s=FreeMarkers.getFtlString(this.getResourceBufferedReader("/com/lazite/assist/produce/jpa/ftl/single/page/common/jsp.ftl"),

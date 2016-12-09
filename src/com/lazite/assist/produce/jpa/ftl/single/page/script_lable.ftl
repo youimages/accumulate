@@ -7,12 +7,7 @@
 <script type="text/javascript" src="<%=basePath%>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" ></script>
 
 <script type="text/javascript" src="<%=basePath%>assets/plugins/jquery.blockui.min.js" ></script>
-<script type="text/javascript" src="<%=basePath%>assets/plugins/jquery.cokie.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>assets/plugins/uniform/jquery.uniform.min.js" ></script>
-
-<script type="text/javascript" src="<%=basePath%>assets/plugins/flot/jquery.flot.min.js" ></script>
-<script type="text/javascript" src="<%=basePath%>assets/plugins/flot/jquery.flot.resize.min.js" ></script>
-<script type="text/javascript" src="<%=basePath%>assets/plugins/flot/jquery.flot.categories.min.js" ></script>
 
 <script type="text/javascript" src="<%=basePath%>assets/plugins/jquery.pulsate.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>assets/plugins/bootstrap-daterangepicker/moment.min.js" ></script>
