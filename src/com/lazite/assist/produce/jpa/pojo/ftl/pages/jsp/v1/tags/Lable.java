@@ -13,5 +13,8 @@ package com.lazite.assist.produce.jpa.pojo.ftl.pages.jsp.v1.tags;
  * @Version   V1.0
  */
 public class Lable extends Element{
+	
 	private String value;
+	
+	
 }
